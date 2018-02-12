@@ -1,6 +1,9 @@
 # mobiquity-tests
 This is a project that has three UI tests scripted using Selenium+Java for Mobiquity assessment for Senior QA engineer
 
+## Test cases
+The test cases are listed in a spreadsheet names `Mobiquity - Test Cases.xlsx` in this repo
+
 ## Instructions
 1. Download the code on your machine
 2. Install `gradle` on your machine
