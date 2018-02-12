@@ -41,7 +41,12 @@ public class ListEmployeesPage {
 
     public boolean isEmployeeWithFirstAndLastNamePresent(String employeeName) {
         genericUtilities.waitForElementPresent( employeeRowLocator );
-        return genericUtilities.isElementPresent( By.xpath( String.format( employeeNameLocator, employeeName ) ),5 );
+        return genericUtilities.isElementPresent( By.xpath( String.format( employeeNameLocator, employeeName ) )
+                ,10 );
+    }
+
+    public boolean waitForEmployeeToBeDeleted(String employeeName) throws InterruptedException {
+        return genericUtilities.waitForElementNotPresent( By.xpath( String.format( employeeNameLocator, employeeName ) )  );
     }
 
     public ListEmployeesPage selectEmployee(String employeeName){

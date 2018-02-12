@@ -28,7 +28,7 @@ public class Test_CreateEmployee extends TestBase {
         loginPage=new LoginPage( driver );
         genericUtilities=new GenericUtilities( driver );
         String randomString=genericUtilities.generateStringWithCurrentTimestamp();
-        String firstName="Pooja"+randomString;
+        String firstName="CreateEmployee"+randomString;
         String lastName="lastName"+randomString;
         String startDate="2017-01-02";
         String email=randomString+"@mailinator.com";

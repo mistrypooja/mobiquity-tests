@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Suite">
+<suite name="Suite" parallel="classes">
 
-    <test name="ADIDAS TEST">
+    <test name="MOBIQUITY TEST">
         <classes>
-            <class name="test.java.mobiquity.usecases.Test_NewsLetterSignUp"/>
-            <class name="test.java.mobiquity.usecases.Test_SearchForWomensJacket"/>
-            <class name="test.java.mobiquity.usecases.Test_ForgottenPasswordFieldValidation"/>
+            <class name="test.java.mobiquity.usecases.Test_CreateEmployee"/>
+            <class name="test.java.mobiquity.usecases.Test_DeleteEmployee"/>
+            <class name="test.java.mobiquity.usecases.Test_EditEmployee"/>
         </classes>
     </test>
 

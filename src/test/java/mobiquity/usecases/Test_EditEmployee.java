@@ -12,6 +12,7 @@ import test.java.mobiquity.utilities.GenericUtilities;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 public class Test_EditEmployee extends TestBase {
@@ -27,7 +28,7 @@ public class Test_EditEmployee extends TestBase {
         loginPage=new LoginPage( driver );
         genericUtilities=new GenericUtilities( driver );
         String randomString=genericUtilities.generateStringWithCurrentTimestamp();
-        String firstName="Pooja"+randomString;
+        String firstName="EditEmployee"+randomString;
         String lastName="lastName"+randomString;
         String employeeName=firstName+" "+lastName;
         String startDate="2017-01-02";
@@ -49,8 +50,11 @@ public class Test_EditEmployee extends TestBase {
 
         employeeDetailsPage.enterLastName( updatedLastName ).clickUpdateButton();
 
-        assertTrue(listEmployeesPage.isEmployeeWithFirstAndLastNamePresent( firstName+" "+updatedLastName ), "The deleted " +
-                "employee was not removed from the List Employee page");
+        assertTrue(listEmployeesPage.isEmployeeWithFirstAndLastNamePresent( firstName+" "+updatedLastName ), "The " +
+                "users updated name was not displayed in the list");
+
+        assertFalse(listEmployeesPage.isEmployeeWithFirstAndLastNamePresent( employeeName ), "The old employee name " +
+                "was still displayed in the list");
 
 
     }

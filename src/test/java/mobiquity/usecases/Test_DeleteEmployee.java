@@ -12,6 +12,7 @@ import test.java.mobiquity.utilities.GenericUtilities;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 public class Test_DeleteEmployee extends TestBase{
@@ -21,13 +22,13 @@ public class Test_DeleteEmployee extends TestBase{
 
     @Test(dataProvider = "testableBrowsers")
     public void testDeleteEmployee(String browser, String version, String platform, Method method)
-            throws IOException {
+            throws IOException, InterruptedException {
 
         driver = setDriver( browser, version, platform, method );
         loginPage=new LoginPage( driver );
         genericUtilities=new GenericUtilities( driver );
         String randomString=genericUtilities.generateStringWithCurrentTimestamp();
-        String firstName="Pooja"+randomString;
+        String firstName="DeleteEmployee"+randomString;
         String lastName="lastName"+randomString;
         String employeeName=firstName+" "+lastName;
         String startDate="2017-01-02";
@@ -43,9 +44,11 @@ public class Test_DeleteEmployee extends TestBase{
 
         assertTrue(listEmployeesPage.isEmployeeWithFirstAndLastNamePresent( employeeName ), "The created employee " +
                 "was not displayed on the List Employee page");
-        listEmployeesPage.selectEmployee( employeeName ).clickDeleteButton().acceptDeleteAlert();
+        listEmployeesPage.selectEmployee( employeeName )
+                .clickDeleteButton()
+                .acceptDeleteAlert();
 
-        assertTrue(listEmployeesPage.isEmployeeWithFirstAndLastNamePresent( employeeName ), "The deleted employee " +
+        assertFalse(listEmployeesPage.waitForEmployeeToBeDeleted( employeeName ), "The deleted employee " +
                 "was not removed from the List Employee page");
 
 
