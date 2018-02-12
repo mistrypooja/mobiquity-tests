@@ -1,0 +1,31 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile "org.seleniumhq.selenium:selenium-java:3.7.1",
+            "org.testng:testng:6.11",
+            "org.hamcrest:java-hamcrest:2.0.0.0",
+            "commons-io:commons-io:2.6",
+            "org.hamcrest:java-hamcrest:2.0.0.0",
+            "org.apache.commons:commons-text:1.2"
+}
+
+sourceSets {
+    test {
+        java {
+            srcDir 'src/test'
+        }
+        resources {
+            srcDir 'lib'
+        }
+    }
+}
+
+test {
+    useTestNG {
+        suites 'testng.xml'
+    }
+}
